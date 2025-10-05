@@ -1,0 +1,268 @@
+\pdfminorversion=4
+
+\documentclass[10pt,aspectratio=169]{beamer}
+
+\usetheme{CEACarre}
+
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{section in toc}{fg=white}
+\setbeamercolor{subsection in toc}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{block title}{fg=white, bg=gray!30}
+\setbeamercolor{block body}{fg=white, bg=gray!10}
+\setbeamercolor{itemize item}{fg=white}
+\setbeamercolor{itemize subitem}{fg=white}
+\setbeamercolor{alerted text}{fg=yellow}
+
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{animate}
+\usepackage[options, squaren]{SIunits}
+\usepackage{adjustbox}
+\usepackage{multimedia}
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,numbers,square}
+\usefonttheme{structuresmallcapsserif}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{hyperref}
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{subsection}\quad}
+
+\newcommand{\thetitle}{\large \thesection\thesubsection \subsecname}
+
+\usepackage{media9}
+
+\usepackage{listings}
+\usepackage[svgnames,table]{xcolor}
+
+% Amélioration des tableaux sur fond noir
+\setbeamercolor{table}{fg=white}
+\setbeamercolor{table header}{fg=white, bg=blue!40!black}
+\setbeamercolor{table row}{bg=black}
+\setbeamercolor{table odd row}{bg=black!80!blue}
+\setbeamercolor{table even row}{bg=black!90!blue}
+
+% ========================================
+% UTILISATION DE TOUTES LES COMMANDES CEA
+% ========================================
+
+\title{Template CEA}
+\subtitle{Illustration des commandes disponibles}
+\date[21/05/25]{La date}
+\author[John Hamon]{John \textsc{Hamon} \footnotesize (Affiliation)}
+
+% Commande \seminar avec version courte et complète
+\seminar[Démo Template]{Template CEA Beamer}
+
+% Commandes spécifiques CEA pour la page finale
+\CEAcenter{Centre}
+\addr{L'adresse\\[0.6ex] France}
+\mail{john.hamon@hotmail.fr}
+\tel{+33 1 69 26 50 69}
+
+\def\path{./fig}
+
+\begin{document}
+
+% ========================================
+% PAGE DE TITRE
+% ========================================
+\begin{frame}[plain]
+\begin{minipage}[c]{.55\linewidth}
+\titlepage
+\end{minipage}\hfill
+\begin{minipage}[b]{.4\linewidth}
+%\vspace{2cm}
+%\centering \includegraphics[width=0.9\textwidth]{\path/logo_exemple}
+\end{minipage}
+\end{frame}
+
+% ========================================
+% LISTES À PUCES AUTOMATIQUES (4 niveaux)
+% ========================================
+\begin{frame}{Listes à puces automatiques}
+\textbf{Les 4 niveaux d'imbrication utilisent automatiquement les marqueurs CEA :}
+\begin{itemize}
+    \item Premier niveau - Carré rouge CEA (\textbackslash CEAi)
+    \begin{itemize}
+        \item Deuxième niveau - Carré gris foncé (\textbackslash CEAii)
+        \begin{itemize}
+            \item Troisième niveau - Carré bleu clair (\textbackslash CEAiii)
+            \begin{itemize}
+                \item Quatrième niveau - Carré bleu foncé (\textbackslash CEAiv)
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    \item Retour au premier niveau
+\end{itemize}
+\end{frame}
+
+% ========================================
+% MARQUEURS PERSONNALISÉS
+% ========================================
+\begin{frame}{Marqueurs personnalisés pour les listes}
+\textbf{Vous pouvez utiliser manuellement les marqueurs :}
+\vspace{0.5em}
+
+\CEAi{} Marqueur rouge CEA (niveau 1) - \texttt{\textbackslash CEAi}
+
+\CEAii{} Marqueur gris foncé (niveau 2) - \texttt{\textbackslash CEAii}
+
+\CEAiii{} Marqueur bleu clair (niveau 3) - \texttt{\textbackslash CEAiii}
+
+\CEAiv{} Marqueur bleu foncé (niveau 4) - \texttt{\textbackslash CEAiv}
+
+\vspace{1em}
+\textbf{Marqueurs de statut :}
+
+\done{} Tâche terminée (vert) - \texttt{\textbackslash done}
+
+\wip{} Travail en cours (orange) - \texttt{\textbackslash wip}
+\end{frame}
+
+% ========================================
+% LISTES NUMÉROTÉES
+% ========================================
+\begin{frame}{Listes numérotées}
+\textbf{Les listes numérotées utilisent le style CEA (rouge et gras) :}
+\begin{enumerate}
+    \item Premier élément numéroté
+    \item Deuxième élément numéroté
+    \item Troisième élément numéroté
+        \begin{enumerate}
+            \item Sous-élément 1
+            \item Sous-élément 2
+        \end{enumerate}
+    \item Quatrième élément numéroté
+\end{enumerate}
+\end{frame}
+
+% ========================================
+% BLOCS
+% ========================================
+\begin{frame}{Blocs colorés}
+
+\vspace{0.5em}
+
+\begin{alertblock}{Bloc d'alerte}
+Ceci est un bloc d'alerte pour mettre en évidence des informations importantes.
+\end{alertblock}
+
+\vspace{0.5em}
+
+\begin{exampleblock}{Bloc d'exemple}
+Ceci est un bloc d'exemple pour illustrer des concepts.
+\end{exampleblock}
+\end{frame}
+
+% ========================================
+% COULEURS CEA DISPONIBLES
+% ========================================
+\begin{frame}{Palette de couleurs CEA}
+\textbf{Couleurs principales :}
+
+\textcolor{CEAred}{CEAred - Rouge CEA} $\bullet$
+\textcolor{CEAdarkblue}{CEAdarkblue - Bleu foncé} $\bullet$
+\textcolor{CEAlightblue}{CEAlightblue - Bleu clair}
+
+\vspace{0.5em}
+\textbf{Nuances de gris :}
+
+\textcolor{CEAdarkgray}{CEAdarkgray - Gris foncé} $\bullet$
+\textcolor{CEAgray}{CEAgray - Gris} $\bullet$
+\textcolor{CEAlightgray}{CEAlightgray - Gris clair (sur fond blanc)}
+
+\vspace{0.5em}
+\textbf{Couleurs complémentaires :}
+
+\textcolor{CEAyellow}{CEAyellow - Jaune} $\bullet$
+\textcolor{CEAmacaron}{CEAmacaron - Macaron} $\bullet$
+\textcolor{CEAarchipel}{CEAarchipel - Archipel}
+
+\textcolor{CEAopera}{CEAopera - Opera} $\bullet$
+\textcolor{CEAglycine}{CEAglycine - Glycine} $\bullet$
+\textcolor{Green}{Green - Vert} $\bullet$
+\textcolor{Orange}{Orange - Orange}
+\end{frame}
+
+% ========================================
+% TEXTE ACCENTUÉ
+% ========================================
+\begin{frame}{Texte accentué}
+\textbf{Mise en évidence du texte :}
+
+Texte normal avec \alert{texte en alerte} qui apparaît en jaune CEA.
+
+\vspace{1em}
+
+Vous pouvez aussi utiliser \textcolor{CEAyellow}{des couleurs personnalisées} dans votre texte.
+
+\vspace{1em}
+
+\textbf{Texte en gras} et \textit{texte en italique} fonctionnent normalement.
+\end{frame}
+
+% ========================================
+% UTILISATION DES COMMANDES INSÉRÉES
+% ========================================
+\begin{frame}{Informations récupérées automatiquement}
+\textbf{Le template utilise automatiquement :}
+\begin{itemize}
+    \item Auteur court dans le pied de page : \insertshortauthor
+    \item Séminaire court dans le pied de page : \insertshortseminar
+    \item Date courte dans le pied de page : \insertshortdate
+    \item Numéro de frame actuel : \insertframenumber
+\end{itemize}
+
+\vspace{1em}
+Ces informations sont définies avec :
+\begin{itemize}
+    \item \texttt{\textbackslash author[court]\{complet\}}
+    \item \texttt{\textbackslash seminar[court]\{complet\}}
+    \item \texttt{\textbackslash date[court]\{complet\}}
+\end{itemize}
+\end{frame}
+
+% ========================================
+% EXEMPLE AVEC COLONNES
+% ========================================
+\begin{frame}{Mise en page avec colonnes}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Colonne gauche}
+\begin{itemize}
+    \item Point 1
+    \item Point 2
+    \item Point 3
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\textbf{Colonne droite}
+\begin{enumerate}
+    \item Élément 1
+    \item Élément 2
+    \item Élément 3
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ========================================
+% PAGE FINALE PERSONNALISÉE
+% ========================================
+\begin{frame}[plain]
+\usebeamertemplate{last page}
+\end{frame}
+
+\end{document}

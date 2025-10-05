@@ -1,0 +1,211 @@
+% Template for the 2023 CEA layout
+\mode<presentation>
+
+% fonts
+\usefonttheme{professionalfonts} % turn off Beamer math replacements
+\RequirePackage{helvet} % TODO: change to Arial?
+
+% other useful package
+\RequirePackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\RequirePackage{enumitem} % Disturbs beamer a bit but works
+\RequirePackage{calc}
+\RequirePackage{array}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+
+% remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% font sizes
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{seminar}{size=\footnotesize}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{footline}{size=\tiny}
+
+% new specific commands
+\newcommand{\insertseminar}{}
+\newcommand{\insertshortseminar}{}
+\newcommand{\insertCEAcenter}{}
+\newcommand{\insertaddr}{}
+\newcommand{\insertmail}{}
+\newcommand{\inserttel}{}
+\newcommand{\seminar}[2][\insertseminar]{
+    \renewcommand{\insertshortseminar}{#1}
+    \renewcommand{\insertseminar}{#2}
+}
+\newcommand{\CEAcenter}[1]{\renewcommand{\insertCEAcenter}{#1}}
+\newcommand{\addr}[1]{\renewcommand{\insertaddr}{#1}}
+\newcommand{\mail}[1]{\renewcommand{\insertmail}{#1}}
+\newcommand{\tel}[1]{\renewcommand{\inserttel}{#1}}
+
+% some lengths
+\newlength{\textmargin}
+\setlength{\textmargin}{8mm}
+\newlength{\footsize}
+\setlength{\footsize}{5mm}
+\newlength{\footlinesep}
+\setlength{\footlinesep}{4mm}
+\newlength{\logotitle}
+\setlength{\logotitle}{24mm}
+\newlength{\cubetitle}
+\setlength{\cubetitle}{36mm}
+\newlength{\cubeframe}
+\setlength{\cubeframe}{30mm}
+\setbeamersize{sidebar width left=0pt,sidebar width right=0pt,
+text margin left=\textmargin,text margin right=\textmargin}
+
+% color theme
+% Those are the official color
+\definecolor{CEAred}{RGB}{229,0,25}
+\definecolor{CEAdarkblue}{RGB}{62,74,131}
+\definecolor{CEAlightblue}{RGB}{126,156,187}
+\definecolor{CEAdarkgray}{RGB}{38,38,38}
+\definecolor{CEAgray}{RGB}{120,120,120}
+\definecolor{CEAlightgray}{RGB}{235,235,235}
+\definecolor{CEAyellow}{RGB}{255,205,49}
+\definecolor{CEAmacaron}{RGB}{218,131,123}
+\definecolor{CEAarchipel}{RGB}{0,147,157}
+\definecolor{CEAopera}{RGB}{189,152,122}
+\definecolor{CEAglycine}{RGB}{167,37,135}
+\definecolor{Green}{RGB}{150,195,30}
+\definecolor{Orange}{RGB}{255,150,0}
+\setbeamercolor{title}{fg=CEAdarkgray}
+\setbeamercolor{normal text}{fg=CEAdarkgray}
+\setbeamercolor{frametitle}{fg=CEAred}
+\setbeamercolor{framesubtitle}{fg=CEAdarkgray}
+\setbeamercolor{structure}{fg=CEAred}
+\setbeamercolor{footline}{fg=CEAgray}
+\setbeamercolor{alerted text}{fg=CEAred}
+
+% blocks
+\setbeamercolor{block title}{bg=CEAred,fg=white}
+\setbeamercolor{block body}{bg=CEAred!8}
+\setbeamertemplate{blocks}[shadow=false]
+\setbeamertemplate{headline}{}
+
+% Blocs d'alerte (alertblock)
+\setbeamercolor{block title alerted}{fg=white, bg=CEAred}
+\setbeamercolor{block body alerted}{fg=white, bg=CEAred!20!black}
+
+% Blocs d'exemple (exampleblock)
+\setbeamercolor{block title example}{fg=white, bg=CEAarchipel}
+\setbeamercolor{block body example}{fg=white, bg=CEAarchipel!20!black}
+
+% items
+\newcommand*{\CEAi}{\tikz[baseline=-0.2ex]\draw[CEAred,fill=CEAred] (0,0) rectangle (.15,.15);}
+\newcommand*{\CEAii}{\tikz[baseline=-0.2ex]\draw[CEAdarkgray,fill=CEAdarkgray] (0,0) rectangle (.15,.15) ;}
+\newcommand*{\CEAiii}{\tikz[baseline=-0.2ex]\draw[CEAlightblue,fill=CEAlightblue] (0,0) rectangle (.15,.15) ;}
+\newcommand*{\CEAiv}{\tikz[baseline=-0.2ex]\draw[CEAdarkblue,fill=CEAdarkblue] (0,0) rectangle (.15,.15) ;}
+\newcommand*{\done}{\tikz[baseline=-0.2ex]\draw[Green,fill=Green] (0,0) rectangle (.15,.15) ;}
+\newcommand*{\wip}{\tikz[baseline=-0.2ex]\draw[Orange,fill=Orange] (0,0) rectangle(.15,.15) ;}
+\newlength{\CEAilen} \setlength{\CEAilen}{\widthof{\CEAi}}
+\newlength{\CEAiilen} \setlength{\CEAiilen}{\widthof{\CEAii}}
+\newlength{\CEAiiilen} \setlength{\CEAiiilen}{\widthof{\CEAiii}}
+\newlength{\CEAivlen} \setlength{\CEAivlen}{\widthof{\CEAiv}}
+\newlength{\CEAilensep} \setlength{\CEAilensep}{\CEAilen+3mm}
+\newlength{\CEAiilensep} \setlength{\CEAiilensep}{\CEAiilen+3mm}
+\newlength{\CEAiiilensep} \setlength{\CEAiiilensep}{\CEAiiilen+3mm}
+\newlength{\CEAivlensep} \setlength{\CEAivlensep}{\CEAivlen+3mm}
+\setlist[itemize,1]{label=\CEAi,labelsep=3mm,labelwidth=\CEAilen,leftmargin=\CEAilensep,itemindent=0pt}
+\setlist[itemize,2]{label=\CEAii,labelsep=3mm,labelwidth=\CEAiilen,leftmargin=\CEAiilensep,itemindent=0pt}
+\setlist[itemize,3]{label=\CEAiii,labelsep=3mm,labelwidth=\CEAiiilen,leftmargin=\CEAiiilensep,itemindent=0pt}
+\setlist[itemize,4]{label=\CEAiv,labelsep=3mm,labelwidth=\CEAivlen,leftmargin=\CEAivlensep,itemindent=0pt}
+\setlist[enumerate]{label=\textcolor{CEAred}{\textbf{\arabic*.}},itemindent=0pt}
+
+% title page
+\defbeamertemplate*{title page}{CEA}[1][]{%
+   % insert logo
+   \begin{textblock*}{\logotitle} (\textmargin,\textmargin)
+      \includegraphics[width=\logotitle]{graphics/logo_cea.pdf}
+   \end{textblock*}
+   % insert cube
+   \begin{textblock*}{\cubetitle} (\paperwidth-\cubetitle,0\paperheight)
+      \includegraphics[width=\cubetitle]{graphics/title_cube.pdf}
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.5\paperheight)
+      \begin{beamercolorbox}[left,#1]{title}
+         \usebeamerfont{title}\inserttitle{}
+      \end{beamercolorbox}%
+      \ifx\insertsubtitle\@empty%
+      \else%
+         \vspace{1.5ex}
+         \begin{beamercolorbox}[left,#1]{subtitle}
+            \usebeamerfont{subtitle}\insertsubtitle{}
+         \end{beamercolorbox}%
+      \fi%
+   \end{textblock*} 
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.7\paperheight)
+      \begin{beamercolorbox}[left,#1]{author}
+         \usebeamerfont{author}\insertauthor{}
+      \end{beamercolorbox}%
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.8\paperheight)
+         \begin{beamercolorbox}[left,#1]{seminar}
+            \usebeamerfont{seminar}\insertseminar{}
+        \end{beamercolorbox}%
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.9\paperheight)
+      \begin{beamercolorbox}[left,#1]{date}
+         \usebeamerfont{date}\insertdate{}
+      \end{beamercolorbox}%
+   \end{textblock*}
+}
+
+\defbeamertemplate*{frametitle}{CEA}[1][]{%
+   \begin{textblock*}{\paperwidth-2\textmargin} (\paperwidth-\cubeframe,0\paperheight)
+      \includegraphics[width=\cubeframe]{graphics/frame_cube.pdf}
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.7\textmargin)
+      \begin{beamercolorbox}{frametitle}
+         \usebeamerfont{frametitle}\insertframetitle{}
+      \end{beamercolorbox}
+   \end{textblock*}
+   \vspace{4.4ex}
+}
+
+% foot line
+\defbeamertemplate*{footline}{CEA}[1][]{%
+   \begin{beamercolorbox}[dp=\footlinesep,left,leftskip=0.4\textmargin,#1]{footline}%
+      \begin{minipage}{1.3\footsize}
+         \includegraphics[width=\footsize]{graphics/logo_cea.pdf}
+      \end{minipage}
+      \begin{minipage}{\paperwidth-3\footsize}
+         \usebeamerfont{footline}
+         \hfill
+         \insertshortauthor{} --
+         \insertshortseminar{} --
+         \insertshortdate{} \hspace{2em}
+         \bfseries \textcolor{CEAred} \insertframenumber{}
+      \end{minipage}
+   \end{beamercolorbox}
+}
+
+% last page
+\defbeamertemplate*{last page}{CEA}[1][]{%
+   % insert logo
+   \begin{textblock*}{\logotitle} (\textmargin,\textmargin)
+      \includegraphics[width=\logotitle]{graphics/logo_cea.pdf}
+   \end{textblock*}
+   % insert cube
+   \begin{textblock*}{\cubetitle} (\paperwidth-\cubetitle,0\paperheight)
+      \includegraphics[width=\cubetitle]{graphics/title_cube.pdf}
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (\textmargin,0.5\paperheight)
+      \LARGE Merci de votre attention
+   \end{textblock*}
+   \begin{textblock*}{\paperwidth-2\textmargin} (0.7\paperwidth,0.7\paperheight)
+      \scriptsize 
+      \textbf{\textsc{\insertCEAcenter{}}}\\[0.7ex]
+      \insertaddr{}\\[0.7ex]
+      \insertmail{}\\[0.7ex]
+      \inserttel{}
+   \end{textblock*}
+}
+
+\mode<all>
