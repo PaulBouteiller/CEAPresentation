@@ -1,0 +1,14 @@
+name: charon-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Packages installés via conda
+  - manim
+  - spyder
+  - opencv
+  # Packages installés via pip
+  - pip
+  - pip:
+    - manim-slides
+    - 
