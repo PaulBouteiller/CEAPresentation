@@ -4,7 +4,9 @@ Dépot illustrant la création de présentation avec beamer et manim-slides de p
 
 
 #Compilation des slides avec manim-slides
+Supposons que le fichier utilisateur s'appelle example.py
 ##Commandes de bases
+Les commandes de bases pour compiler une ou plusieurs slides
 manim example.py Partie
 manim-slides convert Partie slides.html --open
 ##Presentation longues
@@ -18,3 +20,9 @@ manim example.py PartieUne
 
 Puis afficher la présentation complète (manim-slides utilisera l'ancienne version de PartieDeux) avec la commande précédente:
 manim-slides PartieUne PartieDeux
+
+Pour accelerer la compilation l'utilisateur peut rajouter les option -ql à la fin de la ligne de commande:
+manim example.py PartieUne -ql
+
+Si les scènes ont été numérotées Scene1, Scene2 etc...
+for i in {1..5}; do manim -ql example.py Scene$i; done

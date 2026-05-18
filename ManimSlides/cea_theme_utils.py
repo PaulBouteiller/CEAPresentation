@@ -104,11 +104,11 @@ class CEATheme:
         if page_number is not None:
             footer_text_str += f"  {page_number}"
             
-            # Aligner le texte en bas à droite
-        footer_text = Text(footer_text_str, color=WHITE, font_size=18)
+        # Aligner le texte en bas à droite
+        footer_text = Text(footer_text_str, color=GREY_C, font_size=18)
         footer_text.to_corner(DR, buff=0.3)
         footer_text.shift(UP * 0.1)  # Légèrement au-dessus du bord pour l'alignement avec le logo
-        footer_logo = self.create_logo(scale=0.2)
+        footer_logo = self.create_logo(scale=0.15)
         footer_logo.to_corner(DL, buff=0.3)
         if foot_logo:
             footer.add(footer_logo, footer_text)
@@ -382,12 +382,14 @@ class VideoMobject(ImageMobject):
         ret, frame = self.status.videoObject.read()
         
         # Gestion du nombre de boucles
-        if ret == False:
+        if not ret:
             if status.loop_count < self.loop:  # Vérifie si on peut encore boucler
                 status.loop_count += 1  # Incrémente le compteur
                 status.time = 0
-                self.status.videoObject.set(cv2.CAP_PROP_POS_MSEC, status.time)
+                self.status.videoObject.set(cv2.CAP_PROP_POS_FRAMES, 0)  # Retour au début
                 ret, frame = self.status.videoObject.read()
+            else:
+                return  # Arrêter si on a dépassé le nombre de boucles
         
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
